@@ -1,0 +1,98 @@
+import React, { useState } from "react";
+import { auth } from "../firebaseUtils.js"; 
+
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, updateProfile} from "firebase/auth";
+import { redirect } from "react-router-dom";
+
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+function Registration() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+   
+//   const createUser=()=>{
+//     createUserWithEmailAndPassword(auth,email,password);
+//   }
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const  handleEmailLogin = async (e) => {
+    e.preventDefault();
+    createUserWithEmailAndPassword(auth,email,password)
+      .then((userCredential) => {
+        // Handle successful login
+        signInWithEmailAndPassword(userCredential)
+        console.log("Logged in with email and password");
+        
+
+      })
+      .catch((error) => {
+        // Handle login error
+        console.error("Error logging in with email and password:", error);
+      });
+
+    const user= userCredential.user;
+
+    
+
+    await updateProfile(user, {displayName: username});
+    
+  };
+  
+  const provider= new GoogleAuthProvider()
+  
+
+
+  const handleGoogleLogin = () => {
+    signInWithPopup(auth, provider)
+      .then((userCredential) => {
+        // Handle successful login
+        console.log("Logged in with Google");
+        const user= userCredential.user;
+        
+        
+      })
+      .catch((error) => {
+        // Handle login error
+        console.error("Error logging in with Google:", error);
+      });
+
+      redirect('/')
+  };
+
+  return (
+    <div className="container mt-5">
+      <h1>Login Page</h1>
+      <form onSubmit={handleEmailLogin}>
+      <div className="form-group">
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          className="w-10 my-2"
+          onChange={handleEmailChange}
+        />
+        </div>
+        <div className="form-group">
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          className="w-10 my-2"
+          onChange={handlePasswordChange}
+        />
+        </div>
+        <button type="submit" className="btn btn-primary">Login with Email</button>
+      </form>
+      <button onClick={handleGoogleLogin} className="btn btn-danger mt-3">Login with Google</button>
+    </div>
+  );
+}
+
+export default Registration;
