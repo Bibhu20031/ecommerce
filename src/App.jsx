@@ -12,11 +12,12 @@ import User from './pages/User.jsx';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 import Login from './pages/Login.jsx';
-
+import { CartProvider } from './contexts/CartContext.jsx';
 
 
 function App() {
   return (
+    <CartProvider>
     <div className="App">
     <BrowserRouter>
     <Header/>
@@ -34,6 +35,7 @@ function App() {
     <Footer/>
     </BrowserRouter>
   </div>
+  </CartProvider>
   )
 }
 
