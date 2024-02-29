@@ -11,18 +11,6 @@ const Product = () => {
   const [maxPrice, setMaxPrice] = useState('');
 
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const productsResponse = await axios.get('https://fakestoreapi.com/products');
-  //       setProducts(productsResponse.data);
-  //     } catch (error) {
-  //       console.error('Error fetching data:', error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
 
   const {data: product=[], error} =useSWR('https://fakestoreapi.com/products', async(url) => {
     const response= await axios.get(url)
@@ -60,7 +48,7 @@ const Product = () => {
 
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5" style={{backgroundColor:'lightgoldenrodyellow', minHeight:'90vh'}}>
       <h1 className="mb-4">Product Page</h1>
 
       <div className="row">

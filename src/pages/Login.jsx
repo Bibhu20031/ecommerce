@@ -23,11 +23,11 @@ const Login = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <h1>Login Page</h1>
+    <div className="container mt-5" style={{backgroundColor:'lightgoldenrodyellow', minHeight:'90vh'}}>
+      <h1>Login</h1>
       <form onSubmit={handleEmailLogin}>
         <div className="form-group">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email"style={{margin:'10px'}}>Email</label>
           <input
             type="email"
             className="w-10 my-2"
@@ -38,7 +38,7 @@ const Login = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password" style={{margin:'10px'}}>Password</label>
           <input
             type="password"
             className="w-10 my-2"
@@ -49,7 +49,7 @@ const Login = () => {
           />
         </div>
         {error && <div className="alert alert-danger">{error}</div>}
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary" style={{margin:'50px'}}>
           Login with Email
         </button>
       </form>

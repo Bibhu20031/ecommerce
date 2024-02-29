@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink,Link } from 'react-router-dom';
-// import Logo from '../Logo.png';
+import Logo from '../Logo.png';
 import '../index.css';
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -24,7 +24,11 @@ export const Header = () => {
     </button>
     <div className="collapse navbar-collapse" id="navbarNav">
       <ul className="navbar-nav">
-        
+      <li className="nav-item">
+          <NavLink to='/' className="nav-link" >
+           <img src={Logo} alt="Logo" style={{height:'5vh'}} />
+          </NavLink>
+        </li>
         <li className="nav-item">
           <NavLink to='/' className="nav-link active" aria-current="page" >
             Home

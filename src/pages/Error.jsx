@@ -2,7 +2,7 @@ import React from 'react'
 
 function Error() {
   return (
-    <div>Error</div>
+    <div style={{backgroundColor:'lightgoldenrodyellow', minHeight:'90vh'}}>Error</div>
   )
 }
 

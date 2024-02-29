@@ -26,7 +26,7 @@ const CartPage = () => {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5" style={{backgroundColor:'lightgoldenrodyellow', minHeight:'100vh'}}>
       <h2>Shopping Cart</h2>
       {cart.length === 0 ? (
         <p>Your cart is empty.</p>

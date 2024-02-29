@@ -4,7 +4,6 @@ import { BrowserRouter, Routes,Route } from 'react-router-dom';
 import Home from './pages/Home.jsx';
 import About from './pages/About.jsx';
 import Products from './pages/Products.jsx';
-import SingleProduct from './pages/SingleProduct.jsx';
 import Error from './pages/Error.jsx';
 import Cart from './pages/Cart.jsx';
 import Registration from './pages/Registration.jsx';
@@ -30,7 +29,6 @@ function App() {
       <Route path='*' element={<Error/>}/>
       <Route path='/registration' element={<Registration/>}/>
       <Route path='/user' element={<User/>}/>
-      <Route path='/products/:productId' element={<SingleProduct/>}/>
     </Routes>
     <Footer/>
     </BrowserRouter>

@@ -10,9 +10,7 @@ function Registration() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
    
-//   const createUser=()=>{
-//     createUserWithEmailAndPassword(auth,email,password);
-//   }
+
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -67,8 +65,8 @@ function Registration() {
   };
 
   return (
-    <div className="container mt-5">
-      <h1>Login Page</h1>
+    <div className="container mt-5" style={{backgroundColor:'lightgoldenrodyellow', minHeight:'90vh'}}>
+      <h1>Registration</h1>
       <form onSubmit={handleEmailLogin}>
       <div className="form-group">
         <input
