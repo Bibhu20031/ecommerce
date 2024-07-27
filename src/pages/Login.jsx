@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import { auth } from '../firebaseUtils';
 import 'bootstrap/dist/css/bootstrap.min.css'
+import suprsend from '../suprSendConfig'
 
 const Login = () => {
 
@@ -17,6 +18,20 @@ const Login = () => {
 
     try {
       await signInWithEmailAndPassword(auth,email, password);
+
+
+      const event = {
+        distinct_id: user.uid,
+        event: 'user_login',
+        properties: {
+          email: user.email,
+          login_time: new Date().toISOString(),
+        }
+      };
+      suprsend.identify(user.uid);
+  
+      suprsend.track("Event Name",event);
+      console.log('Login notification sent successfully');
     } catch (error) {
       setError(error.message);
     }

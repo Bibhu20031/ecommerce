@@ -12,6 +12,10 @@ import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 import Login from './pages/Login.jsx';
 import { CartProvider } from './contexts/CartContext.jsx';
+import suprsend from '@suprsend/web-sdk';
+
+
+
 
 
 function App() {

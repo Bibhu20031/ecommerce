@@ -3,7 +3,7 @@ import { auth } from "../firebaseUtils.js";
 
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, updateProfile} from "firebase/auth";
 import { redirect } from "react-router-dom";
-
+import {} from '../suprSendConfig.js'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 function Registration() {
@@ -26,7 +26,8 @@ function Registration() {
       .then((userCredential) => {
         // Handle successful login
         signInWithEmailAndPassword(userCredential)
-        console.log("Logged in with email and password");
+        
+    
         
 
       })
@@ -34,6 +35,20 @@ function Registration() {
         // Handle login error
         console.error("Error logging in with email and password:", error);
       });
+      console.log("Logged in with email and password");
+        const event = {
+          distinct_id: user.uid,
+          event: 'user_signup',
+          properties: {
+            email: user.email,
+            signup_time: new Date().toISOString(),
+          }
+        };
+
+      supersend.identify(user.uid);
+      await suprsend.track("Event Name",event);
+      console.log('Signup notification sent successfully');
+      
 
     const user= userCredential.user;
 

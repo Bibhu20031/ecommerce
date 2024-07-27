@@ -2,11 +2,14 @@ import React from 'react'
 import { NavLink,Link } from 'react-router-dom';
 import Logo from '../Logo.png';
 import '../index.css';
+import SuprSendInbox from '@suprsend/react-inbox'      
 
 import 'bootstrap/dist/css/bootstrap.css';
 import User from '../pages/User';
 
 export const Header = () => {
+
+ 
   return (
     <div>
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -59,6 +62,15 @@ export const Header = () => {
             <User/>
           </NavLink>
         </li>
+        
+
+        
+          <SuprSendInbox
+            workspaceKey={import.meta.env.VITE_SUPRSEND_WORKSPACE_KEY}
+            subscriberId={import.meta.env.VITE_SUPRSEND_SUBSCRIBER_ID} 
+            distinctId={'qwerty123456'}
+          />
+        
         
       </ul>
     </div>
